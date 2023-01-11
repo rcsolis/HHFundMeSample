@@ -1,0 +1,27 @@
+{
+  "name": "hardhat-fundme",
+  "version": "1.0.0",
+  "description": "Web3 with hardhat",
+  "main": "scripts/deploy.js",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "keywords": [
+    "Web3",
+    "Hardhat",
+    "Blockchain",
+    "Ethers"
+  ],
+  "author": "Rafael Chavez",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.4",
+    "hardhat": "^2.12.5",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solidity-coverage": "^0.8.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
