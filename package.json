@@ -1,27 +1,35 @@
 {
-  "name": "hardhat-fundme",
-  "version": "1.0.0",
-  "description": "Web3 with hardhat",
-  "main": "scripts/deploy.js",
-  "scripts": {
-    "test": "npx hardhat test"
-  },
-  "keywords": [
-    "Web3",
-    "Hardhat",
-    "Blockchain",
-    "Ethers"
-  ],
-  "author": "Rafael Chavez",
-  "license": "MIT",
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
-    "@nomiclabs/hardhat-etherscan": "^3.1.4",
-    "hardhat": "^2.12.5",
-    "hardhat-gas-reporter": "^1.0.9",
-    "solidity-coverage": "^0.8.2"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+    "name": "hardhat-fundme",
+    "version": "1.0.0",
+    "description": "Web3 with hardhat",
+    "main": "scripts/deploy.js",
+    "scripts": {
+        "lint": "npx solhint contracts/*.sol && npx eslint deploy/*.js --ext .js --fix --ignore-pattern node_modules",
+        "build": "npx hardhat clean && npx hardhat compile --emoji",
+        "hh": "npm run lint && npm run build && npx hardhat --network hardhat deploy",
+        "ganache": "npm run lint && npm run build && npx hardhat --network ganache deploy",
+        "goerli": "npm run lint && npm run build && npx hardhat --network goerli deploy",
+        "test": "npx hardhat test"
+    },
+    "keywords": [
+        "Web3",
+        "Hardhat",
+        "Blockchain",
+        "Ethers"
+    ],
+    "author": "Rafael Chavez",
+    "license": "MIT",
+    "devDependencies": {
+        "@chainlink/contracts": "^0.6.0",
+        "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+        "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
+        "eslint": "^8.32.0",
+        "eslint-config-google": "^0.14.0",
+        "hardhat": "^2.12.5",
+        "hardhat-deploy": "^0.11.22",
+        "solhint": "^3.3.7"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3"
+    }
 }
