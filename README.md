@@ -134,7 +134,10 @@ pragma solidity ^0.8.17;
 
 ## Create the deployment script
 
-Into the folder `scripts` create a new file `deploy.js` with the related code.
+Use the `hardhat-deploy` plugin to deploy the smart contract.
+
+Into the folder `deploy` create new file per contract to be deployed and the mocks used.
+
 
 ## Compile and run
 
