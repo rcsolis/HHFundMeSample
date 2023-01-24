@@ -17,7 +17,7 @@ describe('Test HHFundMe contract', async function () {
 
     describe('Test the constructor', async function () {
         it('Should set the correct price feed address', async function () {
-            const priceFeedAddress = await HHFundMe.priceFeed();
+            const priceFeedAddress = await HHFundMe.s_priceFeed();
             assert.equal(priceFeedAddress, mockV3Aggregator.address);
         });
     });
@@ -93,12 +93,12 @@ describe('Test HHFundMe contract', async function () {
             );
         });
 
-        it('Shoudl emit the WithdrawEvent event', async function () {
+        it('Should emit the WithdrawEvent event', async function () {
             const balance = await HHFundMe.provider.getBalance(HHFundMe.address);
             assert(balance.eq(ethers.utils.parseEther('0.05')), 'Initial balance is not correct');
             await expect(HHFundMe.withdraw())
                 .to.emit(HHFundMe, 'WithdrawEvent')
-                .withArgs(deployer, ethers.utils.parseEther('0'));
+                .withArgs(deployer, ethers.utils.parseEther('0.05'));
         });
 
         it('Should withdraw funds after multiple funders', async function () {
@@ -139,7 +139,7 @@ describe('Test HHFundMe contract', async function () {
             await HHFundMe.fund({ value: amount });
             const accounts = await ethers.getSigners();
             const connectedContract = await HHFundMe.connect(accounts[1]);
-            await expect(connectedContract.withdraw()).to.be.reverted;
+            await expect(connectedContract.withdraw()).to.be.revertedWithCustomError(HHFundMe, 'HHFundMe__NotOwner');
         });
     });
 

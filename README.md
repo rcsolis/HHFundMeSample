@@ -146,7 +146,7 @@ For compile the project and run execute the following command:
 *Note: the `--network` flag is optional and specify the network to be used, if not specified the default network is `hardhat`*
 
 ```shell
-npx hardhat clean && npx hardhat compile && npx hardhat run scripts/deploy.js --network hardhat
+npx hardhat clean && npx hardhat compile && npx hardhat deploy --network hardhat
 ```
 
 ## Create tests for the smart contract
