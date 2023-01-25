@@ -7,6 +7,7 @@
     "prettier.useEditorConfig": false,
     "prettier.enable": true,
     "prettier.quoteProps": "as-needed",
+    "prettier.spaceBeforeFunctionParen": false,
     "editor.formatOnSave": true,
     "[solidity]": {
         "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"

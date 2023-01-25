@@ -9,6 +9,7 @@
         "hh": "npm run lint && npm run build && npx hardhat --network hardhat deploy",
         "ganache": "npm run lint && npm run build && npx hardhat --network ganache deploy",
         "goerli": "npm run lint && npm run build && npx hardhat --network goerli deploy",
+        "local": "npm run lint && npm run build && npx hardhat node",
         "test": "npx hardhat test"
     },
     "keywords": [

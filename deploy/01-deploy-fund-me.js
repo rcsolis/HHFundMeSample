@@ -4,7 +4,7 @@ const { verifyUsingEtherscan } = require('../utils/verify-etherscan');
  * Function to deploy the FundMe contract
  * @param {Object} hre Hardhat Runtime Environment
  */
-module.exports = async (hre) => {
+module.exports = async(hre) => {
     const { deployments, getNamedAccounts, network } = hre;
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();

@@ -18,13 +18,17 @@ Init a new project:
 ```shell
 npm init -y
 ```
-Install the Hardhat package globally:
+Install the Hardhat package:
 ```shell
 npm install --save-dev hardhat
 ```
-Creates hardhat project
+Creates **hardhat project**
 ```shell
 npx hardhat
+```
+Install additional dependencies
+```shell
+npm install --save-dev hardhat-deploy solhint @chainlink/contracts @nomiclabs/hardhat-ethers
 ```
 
 ### Install additional dependencies
@@ -123,6 +127,35 @@ module.exports = {
 };
 ```
 
+additionally, add the helper settings to the `hardhat.config.js` file
+
+```js
+const networkConfig = {
+    31337: {
+        name: 'hardhat',
+    },
+};
+networkConfig[process.env.GANACHE_CHAIN_ID] = {
+    name: 'ganache',
+};
+networkConfig[process.env.GOERLI_CHAIN_ID] = {
+    name: 'goerli',
+    ethUsdPriceFeedAddress: process.env.GOERLI_ETH_USD_PRICE_FEED,
+    blockConfirmations: 6,
+};
+
+const developmentChains = ['hardhat', 'ganache', 'localhost'];
+const mockPriceFeedArgs = {
+    decimals: 8,
+    initialAnswer: 20000000000,
+};
+module.exports = {
+    networkConfig,
+    developmentChains,
+    mockPriceFeedArgs,
+};
+´´´
+
 ## Create the smart contract
 
 Into the folder `contracts` create a new file `FundMe.sol` and add the following code:
@@ -166,9 +199,17 @@ npx hardhat coverage
 npx hardhat help
 npx hardhat test
 npx hardhat coverage
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+```
+
+Use predifined scripts to deploy the contract:
+
+```shell
+npm run lint
+npm run build
+npm run hh
+npm run ganache
+npm run goerli
+npm run local
 ```
 
 # Author and License

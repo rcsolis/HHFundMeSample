@@ -1,7 +1,7 @@
 const { network } = require('hardhat');
 const { developmentChains, mockPriceFeedArgs } = require('../helper-hardhat-config');
 
-module.exports = async (hre) => {
+module.exports = async(hre) => {
     const { deployments, getNamedAccounts } = hre;
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
